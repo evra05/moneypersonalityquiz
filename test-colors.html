@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Personality Colors</title>
+    <link rel="stylesheet" href="public/styles/styles.css">
+    <style>
+        .test-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .test-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--personality-color, #667eea);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+        .test-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: var(--personality-color, #667eea);
+            color: white;
+            margin: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Personality Colors</h1>
+    
+    <div class="test-card" style="--personality-color: #4A90E2;">
+        <h3>SOFI SIMPAN (Blue)</h3>
+        <div class="test-icon">💰</div>
+        <span class="test-badge">UNKNOWN</span>
+        <span class="test-badge">UNKNOWN</span>
+    </div>
+    
+    <div class="test-card" style="--personality-color: #E74C3C;">
+        <h3>ZARA ZOOM SHOPPING (Red)</h3>
+        <div class="test-icon">🛍️</div>
+        <span class="test-badge">UNKNOWN</span>
+        <span class="test-badge">UNKNOWN</span>
+    </div>
+    
+    <div class="test-card" style="--personality-color: #27AE60;">
+        <h3>MUBIN MURAH HATI (Green)</h3>
+        <div class="test-icon">❤️</div>
+        <span class="test-badge">UNKNOWN</span>
+        <span class="test-badge">UNKNOWN</span>
+    </div>
+    
+    <div class="test-card" style="--personality-color: #F39C12;">
+        <h3>DANIAL DON'T CARE (Orange)</h3>
+        <div class="test-icon">😴</div>
+        <span class="test-badge">UNKNOWN</span>
+        <span class="test-badge">UNKNOWN</span>
+    </div>
+    
+    <div class="test-card" style="--personality-color: #9B59B6;">
+        <h3>FaSHA FASHIONISTA (Purple)</h3>
+        <div class="test-icon">👑</div>
+        <span class="test-badge">UNKNOWN</span>
+        <span class="test-badge">UNKNOWN</span>
+    </div>
+</body>
+</html>

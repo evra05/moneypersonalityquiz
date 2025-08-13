@@ -1,0 +1,47 @@
+{
+  "name": "money-personality-test",
+  "version": "1.0.0",
+  "description": "A 20-question money personality test that determines one of 5 personality types",
+  "main": "public/index.html",
+  "scripts": {
+    "start": "live-server public",
+    "dev": "live-server public --port=3000",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "git add . && git commit -m 'Deploy to GitHub Pages' && git push origin main",
+    "deploy:gh-pages": "bash deploy.sh",
+    "test": "echo 'No tests specified'",
+    "lint": "echo 'No linter configured'"
+  },
+  "keywords": [
+    "personality-test",
+    "money",
+    "psychology",
+    "quiz",
+    "airtable",
+    "javascript"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evra05/moneypersonalitytest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/evra05/moneypersonalitytest/issues"
+  },
+  "homepage": "https://evra05.github.io/moneypersonalitytest/",
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "dependencies": {
+    "firebase": "^12.1.0"
+  }
+}
