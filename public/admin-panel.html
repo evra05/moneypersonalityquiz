@@ -11,27 +11,13 @@
             box-sizing: border-box;
         }
         
-        :root {
-            --bg: #f3f4f6;
-            --text: #111827;
-            --muted: #6b7280;
-            --primary: #3b82f6;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --card-bg: #ffffff;
-            --border: #e5e7eb;
-            --sidebar-bg: #111827;
-            --sidebar-hover: #1f2937;
-        }
-        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: var(--bg);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            color: var(--text);
+            color: #333;
         }
         
         /* Login form styles */
@@ -107,11 +93,13 @@
         
         .admin-content {
             display: none;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             min-height: 100vh;
             width: 100%;
-            margin-left: 280px;
         }
         
                           /* Sidebar Navigation */
@@ -121,7 +109,7 @@
              top: 0;
              height: 100vh;
              width: 280px;
-             background: var(--sidebar-bg);
+             background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
              box-shadow: 5px 0 20px rgba(0,0,0,0.2);
              z-index: 1000;
              transition: transform 0.3s ease;
@@ -135,8 +123,8 @@
              background: rgba(0,0,0,0.1);
          }
          
-          .sidebar-header h3 {
-             color: #fff;
+         .sidebar-header h3 {
+             color: white;
              font-size: 1.4em;
              font-weight: 700;
              margin: 0;
@@ -177,18 +165,18 @@
              border-left: 3px solid transparent;
          }
          
-          .nav-item:hover {
-              background: var(--sidebar-hover);
-              color: #fff;
-              border-left-color: var(--primary);
-              transform: translateX(5px);
-          }
+         .nav-item:hover {
+             background: rgba(255,255,255,0.1);
+             color: white;
+             border-left-color: #667eea;
+             transform: translateX(5px);
+         }
          
-          .nav-item.active {
-              background: var(--sidebar-hover);
-              color: #fff;
-              border-left-color: var(--primary);
-          }
+         .nav-item.active {
+             background: rgba(102, 126, 234, 0.2);
+             color: white;
+             border-left-color: #667eea;
+         }
          
          .nav-icon {
              font-size: 1.2em;
@@ -244,13 +232,13 @@
          }
          
          /* Sidebar toggle button */
-          .sidebar-toggle {
+         .sidebar-toggle {
              position: fixed;
              top: 20px;
              left: 20px;
              z-index: 1001;
-              background: var(--primary);
-              color: #fff;
+             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+             color: white;
              border: none;
              padding: 10px;
              border-radius: 8px;
@@ -518,15 +506,27 @@
         }
         
         .header {
-            background: var(--card-bg);
-            color: var(--text);
-            padding: 20px 24px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border: 1px solid var(--border);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
         }
         
-        .header::before { content: none; }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
         
         @keyframes shimmer {
             0% { transform: translateX(-100%); }
@@ -534,11 +534,14 @@
         }
         
         .admin-section {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .admin-section:hover {
@@ -547,24 +550,56 @@
         }
         
         .btn {
-            padding: 10px 16px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            transition: background 0.2s ease, color 0.2s ease, border 0.2s ease;
+            margin-right: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
         }
         
-        .btn::before { content: none; }
-        .btn:hover { opacity: 0.95; }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
         
-        .btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
-        .btn-success { background: var(--success); color: #fff; border-color: var(--success); }
-        .btn-warning { background: var(--warning); color: #111; border-color: var(--warning); }
-        .btn-danger { background: var(--danger); color: #fff; border-color: var(--danger); }
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary { 
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); 
+            color: white; 
+        }
+        .btn-success { 
+            background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%); 
+            color: white; 
+        }
+        .btn-warning { 
+            background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%); 
+            color: black; 
+        }
+        .btn-danger { 
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); 
+            color: white; 
+        }
         
         .stats-grid {
             display: grid;
@@ -719,9 +754,10 @@
         .table-container {
             width: 100%;
             overflow-x: auto;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            background: var(--card-bg);
+            border: 2px solid rgba(102, 126, 234, 0.15);
+            border-radius: 16px;
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
         }
 
         .table {
@@ -732,9 +768,9 @@
 
         .table thead th {
             text-align: left;
-            padding: 12px 14px;
-            background: #f9fafb;
-            color: var(--text);
+            padding: 14px 16px;
+            background: linear-gradient(135deg, rgba(102,126,234,0.15) 0%, rgba(118,75,162,0.15) 100%);
+            color: #333;
             font-weight: 700;
             position: sticky;
             top: 0;
@@ -742,12 +778,14 @@
         }
 
         .table tbody td {
-            padding: 12px 14px;
-            border-top: 1px solid var(--border);
-            color: var(--text);
+            padding: 14px 16px;
+            border-top: 1px solid rgba(102,126,234,0.12);
+            color: #444;
         }
 
-        .table tbody tr:hover { background: #f9fafb; }
+        .table tbody tr:hover {
+            background: rgba(102,126,234,0.06);
+        }
 
         .badge {
             display: inline-block;
@@ -762,16 +800,16 @@
             width: 320px;
             max-width: 100%;
             padding: 12px 14px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: #fff;
+            border: 2px solid rgba(102,126,234,0.2);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.92);
             transition: all 0.2s ease;
         }
 
         .search-input:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.12);
         }
         
         .result-item {
@@ -818,9 +856,21 @@
             to { transform: translateY(0); opacity: 1; }
         }
         
-        .alert-success { background: #ecfdf5; color: #065f46; border-left: 5px solid var(--success); }
-        .alert-error { background: #fef2f2; color: #7f1d1d; border-left: 5px solid var(--danger); }
-        .alert-info { background: #eff6ff; color: #1e40af; border-left: 5px solid var(--primary); }
+        .alert-success { 
+            background: linear-gradient(135deg, rgba(212, 237, 218, 0.9) 0%, rgba(212, 237, 218, 0.7) 100%); 
+            color: #155724; 
+            border-left: 5px solid #28a745;
+        }
+        .alert-error { 
+            background: linear-gradient(135deg, rgba(248, 215, 218, 0.9) 0%, rgba(248, 215, 218, 0.7) 100%); 
+            color: #721c24; 
+            border-left: 5px solid #dc3545;
+        }
+        .alert-info { 
+            background: linear-gradient(135deg, rgba(209, 236, 241, 0.9) 0%, rgba(209, 236, 241, 0.7) 100%); 
+            color: #0c5460; 
+            border-left: 5px solid #17a2b8;
+        }
         
         .chart-container {
             height: 300px;
@@ -1078,7 +1128,7 @@
                  </div>
              </div>
          
-           <div class="header">
+          <div class="header" style="display:none;">
              <h1>📊 Admin Panel</h1>
              <h2>Money Personality Test - Data Analytics</h2>
          </div>
@@ -1115,15 +1165,12 @@
     <script type="module">
         // Import Firebase modules
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-        import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
         import { getFirestore, collection, getDocs, deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
         import { getAnalytics, logEvent } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js';
 
-        // Admin credentials (in production, these should be stored securely)
-        const ADMIN_CREDENTIALS = {
-            username: 'admin2024',
-            password: 'MoneyTest@2024!'
-        };
+        // Local admin form credentials (username/password) map to Firebase Email/Password account
+        // Username is the email; password is the Firebase auth password for that user.
 
         // Check if user is already logged in
         function checkLoginStatus() {
@@ -1137,20 +1184,25 @@
         document.getElementById('login-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Ensure Firebase is initialized before using Auth
+            initFirebaseCore();
+            
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const errorDiv = document.getElementById('login-error');
             
-            if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
-                // Login successful
-                sessionStorage.setItem('adminLoggedIn', 'true');
-                showAdminPanel();
-                errorDiv.textContent = '';
-            } else {
-                // Login failed
-                errorDiv.textContent = 'Invalid username or password. Please try again.';
-                document.getElementById('password').value = '';
-            }
+            // Use Firebase Email/Password authentication
+            signInWithEmailAndPassword(auth, username, password)
+                .then(() => {
+                    sessionStorage.setItem('adminLoggedIn', 'true');
+                    showAdminPanel();
+                    errorDiv.textContent = '';
+                })
+                .catch((err) => {
+                    console.error('Auth error', err);
+                    errorDiv.textContent = 'Invalid username or password. Please try again.';
+                    document.getElementById('password').value = '';
+                });
         });
 
                  // Show admin panel
@@ -1184,9 +1236,10 @@
             'Status Seeker': { count: 0, results: [], percentage: 0 }
         };
 
-        // Initialize Firebase only after successful login
-        function initializeFirebase() {
-            // Firebase configuration
+        // Single-time Firebase initialization
+        let firebaseReady = false;
+        function initFirebaseCore() {
+            if (firebaseReady) return;
             const firebaseConfig = {
                 apiKey: "AIzaSyDqZF8NrUcsMOIaaevC7CrtqFs5r8tgeBI",
                 authDomain: "moneypersonalityquiz.firebaseapp.com",
@@ -1196,21 +1249,21 @@
                 appId: "1:978040983989:web:fdcbe7cfab81f644f149fc",
                 measurementId: "G-C86TXY4ZE0"
             };
-
-            // Initialize Firebase
             app = initializeApp(firebaseConfig);
             auth = getAuth(app);
             db = getFirestore(app);
             analytics = getAnalytics(app);
+            firebaseReady = true;
+        }
 
-            // Initialize Firebase when page loads
-            signInAnonymously(auth).then(() => {
-                console.log('✅ Firebase initialized and user signed in');
-                loadAllData();
-            }).catch((error) => {
-                console.error('❌ Firebase initialization failed:', error);
-                showAlert('Firebase initialization failed: ' + error.message, 'error');
-            });
+        // Initialize data access after successful login
+        function initializeFirebase() {
+            if (!firebaseReady) initFirebaseCore();
+            if (!auth.currentUser) {
+                showAlert('Please log in as admin to view data.', 'error');
+                return;
+            }
+            loadAllData();
         }
 
         // Load all data from Firebase
@@ -2071,6 +2124,7 @@
          window.filterSubmissions = filterSubmissions;
 
                  // Check login status when page loads
+         initFirebaseCore();
          checkLoginStatus();
     </script>
 

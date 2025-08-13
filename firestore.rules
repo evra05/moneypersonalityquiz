@@ -1,0 +1,67 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // OPTION A: whitelist admin UIDs (replace with real UIDs)
+    function isAdminUid() {
+      return request.auth != null &&
+             request.auth.uid in [
+               "q5q5JIxzOTUkOCqUtqjZimZtzGT2"
+             ];
+    }
+
+    // OPTION B: use custom claims (recommended)
+    function isAdminClaim() {
+      return request.auth != null && request.auth.token.admin == true;
+    }
+
+    function isAdmin() { return isAdminUid() || isAdminClaim(); }
+
+    function hasOnly(keys) { return request.resource.data.keys().hasOnly(keys); }
+
+    function isValidTestResult() {
+      return hasOnly([
+        'userName',
+        'userEmail',
+        'userPhone',
+        'answers',
+        'scores',
+        'personalityPercentages',
+        'topPersonalities',
+        'timestamp'
+      ])
+      && ('timestamp' in request.resource.data)
+      && (request.resource.data.timestamp is timestamp || request.resource.data.timestamp is string)
+      && (!('userName' in request.resource.data) || (request.resource.data.userName is string && request.resource.data.userName.size() <= 100))
+      && (!('userEmail' in request.resource.data) || (request.resource.data.userEmail is string && request.resource.data.userEmail.size() <= 150))
+      && (!('userPhone' in request.resource.data) || (request.resource.data.userPhone is string && request.resource.data.userPhone.size() <= 50))
+      && (!('answers' in request.resource.data) || (request.resource.data.answers is list && request.resource.data.answers.size() <= 50))
+      && (!('scores' in request.resource.data) || (request.resource.data.scores is map && request.resource.data.scores.size() >= 1 && request.resource.data.scores.size() <= 20))
+      && (!('topPersonalities' in request.resource.data) || (request.resource.data.topPersonalities is list && request.resource.data.topPersonalities.size() >= 1 && request.resource.data.topPersonalities.size() <= 5));
+    }
+
+    // Public quiz submissions: allow signed-in (including anonymous) to create
+    match /testResults/{docId} {
+      allow create: if isSignedIn() && isValidTestResult();
+      // Only admins can read, list, update, or delete results
+      allow read, list, get: if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+
+    // Optional users collection for lightweight profiles
+    match /users/{docId} {
+      allow create: if isSignedIn();
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Deny everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
+
