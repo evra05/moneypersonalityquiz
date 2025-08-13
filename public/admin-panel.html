@@ -11,13 +11,27 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --bg: #f3f4f6;
+            --text: #111827;
+            --muted: #6b7280;
+            --primary: #3b82f6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --card-bg: #ffffff;
+            --border: #e5e7eb;
+            --sidebar-bg: #111827;
+            --sidebar-hover: #1f2937;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--bg);
             min-height: 100vh;
-            color: #333;
+            color: var(--text);
         }
         
         /* Login form styles */
@@ -93,13 +107,11 @@
         
         .admin-content {
             display: none;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: transparent;
             padding: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
             min-height: 100vh;
             width: 100%;
+            margin-left: 280px;
         }
         
                           /* Sidebar Navigation */
@@ -109,7 +121,7 @@
              top: 0;
              height: 100vh;
              width: 280px;
-             background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+             background: var(--sidebar-bg);
              box-shadow: 5px 0 20px rgba(0,0,0,0.2);
              z-index: 1000;
              transition: transform 0.3s ease;
@@ -123,8 +135,8 @@
              background: rgba(0,0,0,0.1);
          }
          
-         .sidebar-header h3 {
-             color: white;
+          .sidebar-header h3 {
+             color: #fff;
              font-size: 1.4em;
              font-weight: 700;
              margin: 0;
@@ -165,18 +177,18 @@
              border-left: 3px solid transparent;
          }
          
-         .nav-item:hover {
-             background: rgba(255,255,255,0.1);
-             color: white;
-             border-left-color: #667eea;
-             transform: translateX(5px);
-         }
+          .nav-item:hover {
+              background: var(--sidebar-hover);
+              color: #fff;
+              border-left-color: var(--primary);
+              transform: translateX(5px);
+          }
          
-         .nav-item.active {
-             background: rgba(102, 126, 234, 0.2);
-             color: white;
-             border-left-color: #667eea;
-         }
+          .nav-item.active {
+              background: var(--sidebar-hover);
+              color: #fff;
+              border-left-color: var(--primary);
+          }
          
          .nav-icon {
              font-size: 1.2em;
@@ -232,13 +244,13 @@
          }
          
          /* Sidebar toggle button */
-         .sidebar-toggle {
+          .sidebar-toggle {
              position: fixed;
              top: 20px;
              left: 20px;
              z-index: 1001;
-             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-             color: white;
+              background: var(--primary);
+              color: #fff;
              border: none;
              padding: 10px;
              border-radius: 8px;
@@ -506,27 +518,15 @@
         }
         
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
-            position: relative;
-            overflow: hidden;
+            background: var(--card-bg);
+            color: var(--text);
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
         }
         
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            animation: shimmer 3s infinite;
-        }
+        .header::before { content: none; }
         
         @keyframes shimmer {
             0% { transform: translateX(-100%); }
@@ -534,14 +534,11 @@
         }
         
         .admin-section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
         }
         
         .admin-section:hover {
@@ -550,56 +547,24 @@
         }
         
         .btn {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 25px;
+            padding: 10px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
-            margin-right: 15px;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            transition: background 0.2s ease, color 0.2s ease, border 0.2s ease;
         }
         
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
+        .btn::before { content: none; }
+        .btn:hover { opacity: 0.95; }
         
-        .btn:hover::before {
-            left: 100%;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-        
-        .btn-primary { 
-            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); 
-            color: white; 
-        }
-        .btn-success { 
-            background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%); 
-            color: white; 
-        }
-        .btn-warning { 
-            background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%); 
-            color: black; 
-        }
-        .btn-danger { 
-            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); 
-            color: white; 
-        }
+        .btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .btn-success { background: var(--success); color: #fff; border-color: var(--success); }
+        .btn-warning { background: var(--warning); color: #111; border-color: var(--warning); }
+        .btn-danger { background: var(--danger); color: #fff; border-color: var(--danger); }
         
         .stats-grid {
             display: grid;
@@ -750,6 +715,65 @@
             border-radius: 10px;
         }
         
+        /* Modern table and search styles for User Submissions */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--card-bg);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        .table thead th {
+            text-align: left;
+            padding: 12px 14px;
+            background: #f9fafb;
+            color: var(--text);
+            font-weight: 700;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .table tbody td {
+            padding: 12px 14px;
+            border-top: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .table tbody tr:hover { background: #f9fafb; }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .search-input {
+            width: 320px;
+            max-width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #fff;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+        }
+        
         .result-item {
             background: linear-gradient(135deg, rgba(248, 249, 250, 0.9) 0%, rgba(248, 249, 250, 0.7) 100%);
             backdrop-filter: blur(5px);
@@ -794,21 +818,9 @@
             to { transform: translateY(0); opacity: 1; }
         }
         
-        .alert-success { 
-            background: linear-gradient(135deg, rgba(212, 237, 218, 0.9) 0%, rgba(212, 237, 218, 0.7) 100%); 
-            color: #155724; 
-            border-left: 5px solid #28a745;
-        }
-        .alert-error { 
-            background: linear-gradient(135deg, rgba(248, 215, 218, 0.9) 0%, rgba(248, 215, 218, 0.7) 100%); 
-            color: #721c24; 
-            border-left: 5px solid #dc3545;
-        }
-        .alert-info { 
-            background: linear-gradient(135deg, rgba(209, 236, 241, 0.9) 0%, rgba(209, 236, 241, 0.7) 100%); 
-            color: #0c5460; 
-            border-left: 5px solid #17a2b8;
-        }
+        .alert-success { background: #ecfdf5; color: #065f46; border-left: 5px solid var(--success); }
+        .alert-error { background: #fef2f2; color: #7f1d1d; border-left: 5px solid var(--danger); }
+        .alert-info { background: #eff6ff; color: #1e40af; border-left: 5px solid var(--primary); }
         
         .chart-container {
             height: 300px;
@@ -1013,34 +1025,39 @@
                  
                  <div class="sidebar-nav">
                      <div class="nav-section">
-                         <div class="nav-section-title">Dashboard</div>
-                         <div class="nav-item active" onclick="showSection('overview')">
+                         <div class="nav-section-title" style="display:none;">Dashboard</div>
+                         <div class="nav-item" onclick="showSection('overview', event)" style="display:none;">
                              <span class="nav-icon">📊</span>
                              <span class="nav-text">Overview</span>
                          </div>
                      </div>
                      
-                     <div class="nav-section">
+                         <div class="nav-section">
                          <div class="nav-section-title">Data Management</div>
-                         <div class="nav-item" onclick="loadAllData()">
+                             <div class="nav-item" onclick="loadAllData()" style="display:none;">
                              <span class="nav-icon">🔄</span>
                              <span class="nav-text">Refresh Data</span>
                          </div>
-                         <div class="nav-item" onclick="exportData()">
-                             <span class="nav-icon">📥</span>
-                             <span class="nav-text">Export Data</span>
-                         </div>
-                         <div class="nav-item" onclick="clearData()">
+                            <div class="nav-item" onclick="exportAndClearData()" style="display:none;">
+                            <span class="nav-icon">📥</span>
+                            <span class="nav-text">Export Data</span>
+                            <span style="margin-left:6px;color:#28a745;font-weight:600;">(Auto-Clear)</span>
+                        </div>
+                             <div class="nav-item" onclick="clearData()" style="display:none;">
                              <span class="nav-icon">🗑️</span>
                              <span class="nav-text">Clear All Data</span>
                          </div>
-                         <div class="nav-item" onclick="showAdvancedDeleteOptions()">
+                             <div class="nav-item" onclick="showAdvancedDeleteOptions()" style="display:none;">
                              <span class="nav-icon">⚙️</span>
                              <span class="nav-text">Advanced Delete</span>
                          </div>
+                          <div class="nav-item active" onclick="showSection('submissions', event)">
+                              <span class="nav-icon">👤</span>
+                              <span class="nav-text">User Submissions</span>
+                          </div>
                      </div>
                      
-                     <div class="nav-section">
+                     <div class="nav-section" style="display:none;">
                          <div class="nav-section-title">Reports</div>
                          <div class="nav-item" onclick="generateReport()">
                              <span class="nav-icon">📋</span>
@@ -1061,10 +1078,38 @@
                  </div>
              </div>
          
-         <div class="header">
+           <div class="header">
              <h1>📊 Admin Panel</h1>
              <h2>Money Personality Test - Data Analytics</h2>
          </div>
+
+          <!-- User Submissions Section -->
+          <div class="admin-section" id="section-submissions" style="display:block;">
+              <h3>👤 User Submissions</h3>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin: 12px 0 16px 0;gap:12px;flex-wrap:wrap;">
+                  <input id="submissions-search" class="search-input" placeholder="Search name, email, phone, type..." oninput="filterSubmissions()" />
+                  <div>
+                      <button class="btn btn-primary" onclick="loadAllData()">Refresh</button>
+                      <button class="btn btn-success" onclick="exportAndClearData()">Export (Auto-Clear)</button>
+                  </div>
+              </div>
+              <div class="table-container">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th>Name</th>
+                              <th>Email</th>
+                              <th>Phone</th>
+                              <th>Type</th>
+                              <th>Top Score</th>
+                              <th>Date</th>
+                              <th>ID</th>
+                          </tr>
+                      </thead>
+                      <tbody id="submissions-body"></tbody>
+                  </table>
+              </div>
+          </div>
 
     <!-- Firebase SDK -->
     <script type="module">
@@ -1112,6 +1157,9 @@
          function showAdminPanel() {
              document.getElementById('login-container').style.display = 'none';
              document.getElementById('admin-content').style.display = 'block';
+             // Default to submissions-only view
+             document.getElementById('section-overview').style.display = 'none';
+             document.getElementById('section-submissions').style.display = 'block';
              initializeFirebase();
          }
 
@@ -1186,6 +1234,7 @@
                 processPersonalityData();
                 displayPersonalityData();
                 updateOverallStats();
+                displayAllSubmissions();
                 showAlert(`Loaded ${allResults.length} test results`, 'success');
             } catch (error) {
                 console.error('❌ Error loading data:', error);
@@ -1429,21 +1478,23 @@
 
                  
         
-                 function showSection(section) {
+         function showSection(section, evt) {
              // Remove active class from all nav items
              document.querySelectorAll('.nav-item').forEach(item => {
                  item.classList.remove('active');
              });
              
              // Add active class to clicked item
-             event.target.closest('.nav-item').classList.add('active');
+             const targetEl = (evt && evt.target ? evt.target : event && event.target) || null;
+             if (targetEl) {
+                 targetEl.closest('.nav-item').classList.add('active');
+             }
              
              // Handle different sections
-             switch(section) {
-                 case 'overview':
-                     showAlert('Overview section loaded', 'info');
-                     break;
-             }
+             // Always show submissions only
+             document.getElementById('section-overview').style.display = 'none';
+             document.getElementById('section-submissions').style.display = 'block';
+             displayAllSubmissions();
          }
          
          // Sidebar functionality
@@ -1513,6 +1564,7 @@
                     // Update UI
                     displayPersonalityData();
                     updateOverallStats();
+                    displayAllSubmissions();
                     
                     showAlert(`✅ Successfully deleted ${resultsSnapshot.size} test results from database!`, 'success');
                     
@@ -1520,6 +1572,54 @@
                     console.error('❌ Error deleting data:', error);
                     showAlert('❌ Failed to delete data: ' + error.message, 'error');
                 }
+            }
+        }
+        
+        // Auto-clear without confirmation (used after export)
+        async function clearDataSilently() {
+            try {
+                const resultsSnapshot = await getDocs(collection(db, 'testResults'));
+                if (resultsSnapshot.empty) {
+                    // Nothing to clear, but still reset local state to be safe
+                    allResults = [];
+                    Object.keys(personalityData).forEach(type => {
+                        personalityData[type].count = 0;
+                        personalityData[type].results = [];
+                        personalityData[type].percentage = 0;
+                    });
+                    displayPersonalityData();
+                    updateOverallStats();
+                    return;
+                }
+
+                const deletePromises = resultsSnapshot.docs.map(docSnapshot => 
+                    deleteDoc(doc(db, 'testResults', docSnapshot.id))
+                );
+                await Promise.all(deletePromises);
+
+                // Clear local data and refresh UI
+                allResults = [];
+                Object.keys(personalityData).forEach(type => {
+                    personalityData[type].count = 0;
+                    personalityData[type].results = [];
+                    personalityData[type].percentage = 0;
+                });
+                displayPersonalityData();
+                updateOverallStats();
+
+                showAlert('✅ Data cleared automatically after export', 'success');
+            } catch (error) {
+                console.error('Auto clear error:', error);
+                showAlert('❌ Auto-clear failed: ' + error.message, 'error');
+            }
+        }
+
+        // Export then auto-clear
+        async function exportAndClearData() {
+            try {
+                exportData();
+            } finally {
+                await clearDataSilently();
             }
         }
         
@@ -1655,6 +1755,97 @@
                 </html>
             `);
             helpWindow.document.close();
+        }
+
+        // Helpers for derived fields
+        function getPersonalityTypeFromResult(result) {
+            let personalityType = null;
+            if (result.personalityType) {
+                personalityType = result.personalityType;
+            } else if (result.topPersonalities && result.topPersonalities.length > 0) {
+                personalityType = result.topPersonalities[0];
+            } else if (result.finalPersonality) {
+                personalityType = result.finalPersonality;
+            } else if (result.scores) {
+                const scores = result.scores;
+                const maxScore = Math.max(...Object.values(scores));
+                personalityType = Object.keys(scores).find(key => scores[key] === maxScore);
+            }
+            return personalityType;
+        }
+
+        function getHighestScoreFromResult(result) {
+            if (result.scores && typeof result.scores === 'object') {
+                const scores = Object.values(result.scores);
+                if (scores.length > 0) return Math.max(...scores);
+            }
+            return 'N/A';
+        }
+
+        function getDateFromResult(result) {
+            if (!result.timestamp) return 'N/A';
+            try {
+                if (typeof result.timestamp === 'string') {
+                    return new Date(result.timestamp).toLocaleString();
+                } else if (result.timestamp.toDate && typeof result.timestamp.toDate === 'function') {
+                    return result.timestamp.toDate().toLocaleString();
+                } else if (result.timestamp instanceof Date) {
+                    return result.timestamp.toLocaleString();
+                }
+            } catch (e) {
+                return 'Invalid Date';
+            }
+            return 'N/A';
+        }
+
+        // Render all user submissions in a modern table
+        function displayAllSubmissions() {
+            const tbody = document.getElementById('submissions-body');
+            if (!tbody) return;
+
+            // Sort by timestamp desc when possible
+            const sorted = [...allResults].sort((a, b) => {
+                const ad = new Date(getDateFromResult(a));
+                const bd = new Date(getDateFromResult(b));
+                return bd - ad;
+            });
+
+            const rows = sorted.map(result => {
+                const type = getPersonalityTypeFromResult(result) || '-';
+                const color = getPersonalityColor(type);
+                const score = getHighestScoreFromResult(result);
+                const dateStr = getDateFromResult(result);
+                const idShort = result.id ? result.id.slice(-6) : 'N/A';
+                const name = result.userName || 'Anonymous';
+                const email = result.userEmail || '-';
+                const phone = result.userPhone || '-';
+
+                return `
+                    <tr>
+                        <td>${name}</td>
+                        <td>${email}</td>
+                        <td>${phone}</td>
+                        <td><span class="badge" style="background:${color}">${type}</span></td>
+                        <td>${score}</td>
+                        <td>${dateStr}</td>
+                        <td>${idShort}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            tbody.innerHTML = rows || `<tr><td colspan="7" style="text-align:center;color:#666;padding:18px;">No submissions found.</td></tr>`;
+        }
+
+        // Simple client-side filter for submissions
+        function filterSubmissions() {
+            const input = document.getElementById('submissions-search');
+            const term = (input?.value || '').toLowerCase();
+            const tbody = document.getElementById('submissions-body');
+            if (!tbody) return;
+            Array.from(tbody.querySelectorAll('tr')).forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(term) ? '' : 'none';
+            });
         }
         
                  // Advanced delete functions
@@ -1869,19 +2060,22 @@
          window.toggleSidebar = toggleSidebar;
          window.exportData = exportData;
          window.clearData = clearData;
+         window.exportAndClearData = exportAndClearData;
+         window.clearDataSilently = clearDataSilently;
          window.generateReport = generateReport;
          window.downloadPDF = downloadPDF;
          window.showAdvancedDeleteOptions = showAdvancedDeleteOptions;
          window.deleteByPersonalityType = deleteByPersonalityType;
          window.deleteByDateRange = deleteByDateRange;
          window.deleteOldData = deleteOldData;
+         window.filterSubmissions = filterSubmissions;
 
                  // Check login status when page loads
          checkLoginStatus();
     </script>
 
     <!-- Overall Statistics Section -->
-    <div class="admin-section">
+    <div class="admin-section" id="section-overview" style="display:none;">
         <h3>📊 Overall Statistics</h3>
         <div class="stats-grid">
             <div class="stat-card">
@@ -1900,7 +2094,7 @@
     </div>
 
     <!-- Personality Data Section -->
-    <div class="admin-section">
+    <div class="admin-section" style="display:none;">
         <h3>🎭 Personality Type Analysis</h3>
         <div id="personality-data">
             <div style="text-align: center; padding: 40px;">
